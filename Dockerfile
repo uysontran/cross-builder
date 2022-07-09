@@ -4,7 +4,6 @@ LABEL Name="Moxa Cross Compiler" Version=0.0.1
 COPY ./python3 /usr/local/
 WORKDIR /usr/local/bin/python3
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.6 1
-RUN python3 -v
 #install nodejs
 COPY ./node-v16.15.1-linux-x64 /usr/
 #install build toolchains
