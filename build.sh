@@ -10,6 +10,7 @@ if [ ! -d "$DIR" ]; then
   echo "No node build found, download build from source"
   NODE="node-v16.15.1-linux-armv7l"
   wget --no-check-certificate "https://nodejs.org/dist/v16.15.1/${NODE}.tar.xz"
+  mkdir -p ./node-build/dist
   tar -xf "${NODE}.tar.xz" -C ./node-build/dist/
   rm "./${NODE}.tar.xz"
   mv "./node-build/dist/${NODE}" ./node-build/dist/node
@@ -25,7 +26,19 @@ if [ ! -d "$DIR" ]; then
 fi
 #check sqlite3
 
-
+#check pkg-build
+DIR=./pkg-build/dist/
+if [ ! -d "$DIR" ]; then
+  # Take action if $DIR exists. #
+  echo "pkg-build not found, cross-compiling"
+  DOCKER_BUILDKIT=1 docker build -f ./pkg-build/Dockerfile --output ./pkg/dist .
+fi
+DIR=./pkg-build/dist/
+if [ ! -d "$DIR" ]; then
+  # Take action if $DIR exists. #
+  echo "pkg not found, cross-compiling"
+  DOCKER_BUILDKIT=1 docker build --output ./pkg-build/dist ./pkg-build
+fi
 while getopts 'n:' OPTION; do
   case "$OPTION" in
     n)
