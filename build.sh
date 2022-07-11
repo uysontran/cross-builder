@@ -22,7 +22,7 @@ DIR=./python-build/dist/python3
 if [ ! -d "$DIR" ]; then
   # Take action if $DIR exists. #
   echo "python3 not found, cross-compiling"
-  DOCKER_BUILDKIT=1 docker build --output ./python-build/dist .
+  DOCKER_BUILDKIT=1 docker build --output ./python-build/dist ./python-build
 fi
 #check sqlite3
 
