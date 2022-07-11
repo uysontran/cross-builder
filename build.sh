@@ -10,7 +10,7 @@ if [ ! -d "$DIR" ]; then
   echo "No node build found, download build from source"
   NODE="node-v16.15.1-linux-armv7l"
   wget --no-check-certificate "https://nodejs.org/dist/v16.15.1/${NODE}.tar.xz"
-  tar -xJvf "${NODE}.tar.xz" -C ./node-build/dist/
+  tar -xvzf "${NODE}.tar.xz" -C ./node-build/dist/
   rm "./${NODE}.tar.xz"
   mv "./node-build/dist/${NODE}" ./node-build/dist/node
 fi
@@ -21,7 +21,7 @@ if [ ! -d "$DIR" ]; then
   # Take action if $DIR exists. #
   echo "python3 not found, cross-compiling"
   DOCKER_BUILDKIT=1 docker build --output ./python-build/dist ./python-build
-  tar -xJvf "./python-build/dist/python3.tar.gz" -C ./python-build/dist
+  tar -xvzf "./python-build/dist/python3.tar.gz" -C ./python-build/dist
 fi
 #check sqlite3
 
