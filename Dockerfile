@@ -7,8 +7,8 @@ RUN apt install libbz2-dev libc6-dev libgdbm-dev libncursesw5-dev libreadline-gp
 WORKDIR /tmp/
 RUN wget --no-check-certificate https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tgz
 RUN ls
-RUN tar -xvf python-3.6.9.tgz
-WORKDIR /tmp/python-3.6.9
+RUN tar -xJvf Python-3.6.9.tgz
+WORKDIR /tmp/Python-3.6.9
 RUN ./configure --prefix=/tmp/python3
 RUN make
 RUN make altinstall
