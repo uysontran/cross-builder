@@ -3,7 +3,7 @@ LABEL Name="Moxa Cross Compiler" Version=0.0.1
 #install python
 RUN apt update
 RUN apt install build-essential checkinstall -y
-RUN apt install libbz2-dev libc6-dev libgdbm-dev libncursesw5-dev libreadline-gplv2-dev libssl-dev libsqlite3-dev tk-dev -y
+RUN apt install libbz2-dev libc6-dev libgdbm-dev libncursesw5-dev libreadline-gplv2-dev libssl-dev libsqlite3-dev tk-dev wget -y
 WORKDIR /tmp/
 RUN wget --no-check-certificate https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tgz
 RUN tar -zxvf python3.6.9.tgz
