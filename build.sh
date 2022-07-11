@@ -3,7 +3,7 @@
 apt-get install -y qemu \
    && binfmt-support \
    && qemu-user-static
-
+docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 #check node
 DIR="./node-build/dist/node"
 echo "Checking for node build"
