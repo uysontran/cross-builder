@@ -14,8 +14,8 @@ RUN make
 RUN make altinstall
 WORKDIR /tmp
 RUN tar -zcvf python3.tar.gz python3
-# FROM scratch AS export-stage
-# COPY --from=cc /tmp/python3.tar.gz python3.tar.gz
+FROM scratch AS export-stage
+COPY --from=cc /tmp/python3.tar.gz python3.tar.gz
 # COPY ./python3 /usr/local/
 # WORKDIR /usr/local/bin/python3
 # RUN update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.6 1
