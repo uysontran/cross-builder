@@ -6,16 +6,13 @@ RUN apt install build-essential checkinstall -y
 RUN apt install libbz2-dev libc6-dev libgdbm-dev libncursesw5-dev libreadline-gplv2-dev libssl-dev libsqlite3-dev tk-dev wget -y
 WORKDIR /tmp/
 RUN wget --no-check-certificate https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tgz
-RUN ls
 RUN tar -xJvf Python-3.6.9.tgz
 WORKDIR /tmp/Python-3.6.9
-RUN ./configure --prefix=/tmp/python3
+RUN ./configure --prefix="/tmp/python3" --enable-optimizations --enable-shared
 RUN make
 RUN make altinstall
 WORKDIR /tmp
 RUN tar -zcvf python3.tar.gz python3
-FROM scratch AS export-stage
-COPY --from=cc /tmp/python3.tar.gz python3.tar.gz
 # COPY ./python3 /usr/local/
 # WORKDIR /usr/local/bin/python3
 # RUN update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.6 1
