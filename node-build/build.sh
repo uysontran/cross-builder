@@ -4,3 +4,4 @@ wget --no-check-certificate "https://nodejs.org/dist/v16.15.1/${NODE}.tar.xz"
 tar -xJvf "${NODE}.tar.xz" -C ./node-build/dist/
 rm "./${NODE}.tar.xz"
 mv "./node-build/dist/${NODE}" ./node-build/dist/node
+

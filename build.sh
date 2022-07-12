@@ -18,12 +18,12 @@ fi
 
 #check python3
 DIR=./python-build/dist/python3
-if [ ! -d "$DIR" ]; then
-  # Take action if $DIR exists. #
-  echo "python3 not found, cross-compiling"
-  DOCKER_BUILDKIT=1 docker build --output ./python-build/dist ./python-build
-  tar -xvzf "./python-build/dist/python3.tar.gz" -C ./python-build/dist
-fi
+# if [ ! -d "$DIR" ]; then
+#   # Take action if $DIR exists. #
+#   echo "python3 not found, cross-compiling"
+#   DOCKER_BUILDKIT=1 docker build --output ./python-build/dist ./python-build
+#   tar -xvzf "./python-build/dist/python3.tar.gz" -C ./python-build/dist
+# fi
 #check sqlite3
 
 #check pkg-build
