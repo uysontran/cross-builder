@@ -12,8 +12,3 @@ RUN apt install -y make build-essential
 RUN npm install -g pkg@5.7.0
 COPY ./pkg-build/ /tmp
 WORKDIR /tmp
-# RUN pkg . -b
-
-FROM scratch AS export-stage
-COPY --from=Compiler /root/.pkg-cache/v3.4/built-v16.15.0-linux-armv7  built-v16.15.0-linux-armv7
-COPY --from=Compiler /root/.pkg-cache/v3.4/built-v16.15.0-linux-armv7.sha256sum  built-v16.15.0-linux-armv7.sha256sum 

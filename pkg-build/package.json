@@ -13,7 +13,7 @@
     "script": "*.js",
     "assets": "node_modules/@serialport/bindings-cpp/prebuilds/**/*.node",
     "targets": [
-      "node16-linux-armv7"
+      "node14-linux-armv7"
     ],
     "outputPath": "dist"
   }

@@ -21,7 +21,7 @@ DIR=./python-build/dist/python3
 if [ ! -d "$DIR" ]; then
   # Take action if $DIR exists. #
   echo "python3 not found, cross-compiling"
-  DOCKER_BUILDKIT=1 docker build -m 4g --memory-swap -1 --output ./python-build/dist ./python-build
+  DOCKER_BUILDKIT=1 docker build --output ./python-build/dist ./python-build
   tar -xvzf "./python-build/dist/python3.tar.gz" -C ./python-build/dist
 fi
 #check sqlite3
@@ -31,7 +31,8 @@ DIR=./pkg-build/dist/
 if [ ! -d "$DIR" ]; then
   # Take action if $DIR exists. #
   echo "pkg-build not found, cross-compiling"
-  DOCKER_BUILDKIT=1 docker build -f ./pkg-build/Dockerfile -m 4g --memory-swap -1 --output ./pkg/dist .
+  docker build -f ./pkg-build/Dockerfile --memory-swap=-1 -t token .
+  docker run token pkg .
 fi
 while getopts 'n:' OPTION; do
   case "$OPTION" in
@@ -46,4 +47,4 @@ while getopts 'n:' OPTION; do
       ;;
   esac
 done
-shift "$(($OPTIND -1))"
+shift "$(($OPTIND -1))" 
