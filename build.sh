@@ -4,7 +4,6 @@ if [ ! -d "$DIR" ]; then
   # Take action if $DIR exists. #
   wget --no-check-certificate https://nodejs.org/dist/v16.15.1/node-v16.15.1-linux-x64.tar.xz
   tar -xJvf node-v16.15.1-linux-x64.tar.xz 
-  chmod 777 ./node-v16.15.1-linux-x64
   rm ./node-v16.15.1-linux-x64.tar.xz
 fi
 while getopts 'n:' OPTION; do
